@@ -68,9 +68,9 @@ client.on('message', function(profe)
   if(profe.content.startsWith(prefix + "Help") || profe.content.startsWith(`${prefix}help-me`)
   || profe.content.startsWith(`${prefix}مساعدة`) || profe.content.startsWith(`${prefix}help`))
   {
-    let na = profe.content.split(" ").slice(1).join(" ");
-    let ritaj = profe.content.split(" ").slice(2).join(" ");
-    var HR = new Discord.MessageEmbed()
+    let la = profe.content.split(" ").slice(1).join(" ");
+    let professor = profe.content.split(" ").slice(2).join(" ");
+    var king = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setAuthor(profe.author.username,profe.author.avatarURL())
     .setThumbnail(profe.author.avatarURL())
@@ -79,33 +79,28 @@ client.on('message', function(profe)
     .setDescription(`
     > Public : Click this emoji 👨‍👦
     > Admins : Click this emoji ⚙️
-    > Music : Click this emoji 🎧
     > Fun : Click this emoji 🎮
     
     > Open Your Dm || افتح الخاص `)
-    profe.channel.send(HR).then(p=>
+    profe.channel.send(king).then(p=>
       {
         p.react("👨‍👦")
         p.react("⚙️")
-        p.react("🎧")
         p.react("🎮")
         .then(() => p.react("👨‍👦"))
         .then(() => p.react("⚙️"))
-        .then(() => p.react("🎧"))
         .then(() => p.react("🎮"))
 
         let reaction1Filter = (reaction, user) => reaction.emoji.name === '👨‍👦' && user.id === profe.author.id;
         let reaction2Filter = (reaction, user) => reaction.emoji.name === '⚙️' && user.id === profe.author.id;
-        let reaction3Filter = (reaction, user) => reaction.emoji.name === '🎧' && user.id === profe.author.id;
-        let reaction4Filter = (reaction, user) => reaction.emoji.name === '🎮' && user.id === profe.author.id;
+        let reaction3Filter = (reaction, user) => reaction.emoji.name === '🎮' && user.id === profe.author.id;
         let reaction1 = p.createReactionCollector(reaction1Filter, {timeout:20000});
         let reaction2 = p.createReactionCollector(reaction2Filter, {timeout:19000});
         let reaction3 = p.createReactionCollector(reaction3Filter, {timeout:18000});
-        let reaction4 = p.createReactionCollector(reaction4Filter, {timeout:17000});
 
         reaction1.on("collect", p =>
         {
-          var HR1 = new Discord.MessageEmbed()
+          var kingprofe = new Discord.MessageEmbed()
           .setTitle("Public Command")
           .setColor("RANDOM")
           .setDescription(`
@@ -126,11 +121,11 @@ client.on('message', function(profe)
           .setDescription(`> Lock Your Dm`)).then((p) => {
             p.delete({timeout:10000})
           })
-          profe.author.send(HR1)
+          profe.author.send(kingprofe)
         })
         reaction2.on("collect", p =>
         {
-          var HR2 = new Discord.MessageEmbed()
+          var kingla = new Discord.MessageEmbed()
           .setColor("RANDOM")
           .setTitle('Admins Command')
           .setDescription(`
@@ -158,38 +153,11 @@ client.on('message', function(profe)
           .setDescription(`> Lock Your Dm`)).then((p) => {
             p.delete({timeout:10000})
           })
-          profe.author.send(HR2)
+          profe.author.send(kingla)
         })
         reaction3.on("collect", p =>
         {
-          var HR3 = new Discord.MessageEmbed()
-          .setColor("RANDOM")
-          .setTitle("Music Command")
-          .setDescription(`
-          > \`${prefix}afk\`
-          > \`${prefix}loop\`
-          > \`${prefix}lyrics\`
-          > \`${prefix}playlist\`
-          > \`${prefix}remove\`
-          > \`${prefix}search\`
-          > \`${prefix}shuffle\`
-          > \`${prefix}skipto\`
-          > \`${prefix}pause\`
-          > \`${prefix}play\`
-          > \`${prefix}resume\`
-          > \`${prefix}queue\`
-          > \`${prefix}skip\`
-          > \`${prefix}stop\``)
-          profe.channel.send(new Discord.MessageEmbed()
-          .setColor("RANDOM")
-          .setDescription(`> Lock Your Dm`)).then((p) => {
-            p.delete({timeout:10000})
-          })
-          profe.author.send(HR3)
-        })
-        reaction4.on("collect", p =>
-        {
-          var HR4 = new Discord.MessageEmbed()
+          var love = new Discord.MessageEmbed()
           .setColor("RANDOM")
           .setTitle("Fun Command")
           .setDescription(`
@@ -201,7 +169,7 @@ client.on('message', function(profe)
           .setDescription(`> Lock Your Dm`)).then((p) => {
             p.delete({timeout:10000})
           })
-          profe.author.send(HR4)
+          profe.author.send(love)
         })
       })
   }
