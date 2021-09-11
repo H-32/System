@@ -10,7 +10,7 @@ const { token, prefix, id} = require("./bot.json");
 const fetch = require("node-fetch");
 
 client.on('ready', () => {
-     client.user.setActivity("Gazra | Bot", {type:"COMPETING"});
+     client.user.setActivity("King Profe 👑", {type:"COMPETING"});
      console.log(`${client.user.username} is Online !
      __________________________________________________
      Server => ${client.guilds.cache.size}
@@ -377,5 +377,62 @@ client.on('message', message => {
     .setTitle("Spread Command"))
     }
 });
+
+////System
+let antibots = JSON.parse(fs.readFileSync('./antibots.json' , 'utf8'));
+  client.on('message', message => {
+    
+      if(message.content.startsWith(prefix + "antibots on")) {
+          if(!message.channel.guild) return;
+          if(!message.member.hasPermission('ADMINISTRATOR')) return;
+  antibots[message.guild.id] = {
+  onoff: 'On',
+  }
+  message.channel.send(`**AntiBots Join Is On**`)
+            fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
+              if (err) console.error(err)
+              .catch(err => {
+                console.error(err);
+            });
+              });
+            }
+    
+          })
+
+  client.on('message', message => {
+    if(message.content.startsWith(prefix + "antibots off")) {
+          if(!message.channel.guild) return;
+          if(!message.member.hasPermission('ADMINISTRATOR')) return;
+  antibots[message.guild.id] = {
+  onoff: 'Off',
+  }
+  message.channel.send(`**AntiBots Join Is Off**`)
+            fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
+              if (err) console.error(err)
+              .catch(err => {
+                console.error(err);
+            });
+              });
+            }
+  
+          })    
+  
+  client.on("guildMemberAdd", member => {
+    if(!antibots[member.guild.id]) antibots[member.guild.id] = {
+  onoff: 'Off'
+  }
+    if(antibots[member.guild.id].onoff === 'Off') return;
+  if(member.user.bot) return member.kick()
+  })
+  
+  fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
+  if (err) console.error(err)
+  .catch(err => {
+  console.error(err);
+  });
+  
+})
+
+
 
 client.login(token)
