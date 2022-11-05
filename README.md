@@ -15,10 +15,9 @@ The personal information of the developer
 - المعلومات الشخصية للمطور
 
 - Instagram = https://www.instagram.com/32i_t/
-- Facebook = https://www.facebook.com/huesin.ahmad
-- Github = https://github.com/9bbq
+- Github = https://github.com/H-32
 - Twitter = https://twitter.com/ip_2w
-- Discord = !                      PROFESSOR#3874
+- Discord = !               PROFESSOR#3874
 
 ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・
 
